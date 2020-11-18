@@ -32,6 +32,7 @@ def canCompleteCircuit(gas: List[int], cost: List[int]) -> int:
         return start
     return -1
 
+# 官方题解
 def canCompleteCircuit1(gas: List[int], cost: List[int]) -> int:
     n, i = len(gas), 0
     while i < n:
