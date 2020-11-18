@@ -32,8 +32,26 @@ def canCompleteCircuit(gas: List[int], cost: List[int]) -> int:
         return start
     return -1
 
+def canCompleteCircuit1(gas: List[int], cost: List[int]) -> int:
+    n, i = len(gas), 0
+    while i < n:
+        gas_sum, cost_sum = 0, 0
+        cnt = 0
+        while cnt < n:
+            j = (i + cnt) % n
+            gas_sum += gas[j]
+            cost_sum += cost[j]
+            if gas_sum < cost_sum:
+                break
+            cnt += 1
+        if cnt == n:
+            return i
+        else:
+            i = i + cnt + 1
+    return -1
+
 
 if __name__ == '__main__':
     gas = [2, 3, 4]
     cost = [3, 4, 3]
-    print(canCompleteCircuit(gas, cost))
+    print(canCompleteCircuit1(gas, cost))
